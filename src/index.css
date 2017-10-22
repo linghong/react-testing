@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 5%;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.note {
+	color: steelblue;
+	font-size: 14px;
+	font-style : italic;
+	text-align: left;
+	padding: 5px;
+}
+
+@import url("../node_modules/bootstrap/dist/css/bootstrap.css");
+

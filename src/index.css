@@ -12,6 +12,9 @@ body {
 	text-align: left;
 	padding: 5px;
 }
+.formcontrol{
+	padding-bottom: 10px;
+}
 
 @import url("../node_modules/bootstrap/dist/css/bootstrap.css");
 

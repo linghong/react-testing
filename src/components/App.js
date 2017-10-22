@@ -45,9 +45,9 @@ class App extends Component {
 				<h2> Notes</h2>
 				<Form inline>
 					<FormControl onChange={this.onFormChange}/>
-					{''}
 					<Button onClick={this.onFormSubmission}>Submit</Button>
 				</Form>
+
 				{
 					this.state.notes.map((note,i)=>{
 						return (
@@ -55,9 +55,9 @@ class App extends Component {
 						);
 					})
 				}
-				<Button onClick={this.CclearNotes} >
+				{this.state.notes.length!==0?(<Button onClick={this.clearNotes} >
 					Clear Notes
-				</Button>
+				</Button>):null}
 			</div>
 		)
 	}

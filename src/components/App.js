@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import {Form, FormControl, Button} from  'react-bootstrap';
 import Note from './note';
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies';
+
+const cookie_key = 'NOTES';
+
 class App extends Component {
 	constructor(){
 			super();
@@ -9,6 +13,12 @@ class App extends Component {
 				notes: []
 			};
 		}
+
+	componentDidMount(){
+		this.setState ({
+			notes: read_cookie(cookie_key)
+		});
+	}
 
 	onFormChange=(e)=>{
 		this.setState({
@@ -21,6 +31,12 @@ class App extends Component {
 		const newNote ={ text };
 		notes.push(newNote);
 		this.setState({notes});
+		bake_cookie(cookie_key, this.state.notes);
+	}
+
+	clearNotes =()=>{
+		delete_cookie(cookie_key);
+		this.setState({notes: []});
 	}
 
 	render(){		
@@ -39,6 +55,9 @@ class App extends Component {
 						);
 					})
 				}
+				<Button onClick={this.CclearNotes} >
+					Clear Notes
+				</Button>
 			</div>
 		)
 	}

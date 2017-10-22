@@ -42,7 +42,7 @@ class App extends Component {
 	render(){		
 		return (
 			<div>
-				<h2> Notes</h2>
+				<h2>Notes</h2>
 				<Form inline>
 					<FormControl onChange={this.onFormChange}/>
 					<Button onClick={this.onFormSubmission}>Submit</Button>
@@ -55,9 +55,9 @@ class App extends Component {
 						);
 					})
 				}
-				{this.state.notes.length!==0?(<Button onClick={this.clearNotes} >
+				<Button onClick={this.clearNotes} >
 					Clear Notes
-				</Button>):null}
+				</Button>
 			</div>
 		)
 	}

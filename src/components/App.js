@@ -55,9 +55,9 @@ class App extends Component {
 						);
 					})
 				}
-				<Button onClick={this.clearNotes} >
+				{this.state.notes.length!==0?(<Button onClick={this.clearNotes} >
 					Clear Notes
-				</Button>
+				</Button>):null}
 			</div>
 		)
 	}

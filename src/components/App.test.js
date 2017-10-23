@@ -24,7 +24,41 @@ describe('App', ()=>{
 			expect(app.find('FormControl').exists()).toBe(true);
 		});
 		it('render a submit button', ()=>{
-			expect(app.find('Button').at(0).text()).toEqual('Submit');;
+			expect(app.find('Button').at(0).text()).toEqual('Submit');
 		});
-	})
+	});
+
+	describe('when creating a note', ()=>{
+		let testNote ="test note";
+		beforeEach(()=>{
+			app.find('FormControl').simulate('change', {
+				target: { value: testNote }
+			});
+		});
+
+		it('update the text in state', ()=>{
+			expect(app.state().text).toEqual(testNote);
+		});
+
+		describe('and submitting the new note', ()=>{
+			beforeEach(()=>{
+				app.find('.btn').at(0).simulate('click');
+			});
+
+			it('adds the new note to state', ()=>{
+				expect(app.state().notes[0].text).toEqual(testNote)
+			});
+
+			describe('and clicking the clear button', ()=>{
+				beforeEach(()=>{
+					app.find('.btn').at(1).simulate('click');
+				});
+
+				it('clears the notes in state', ()=>{
+					expect(app.state().notes).toEqual([]);
+				});
+			});
+
+		})
+	});
 });
